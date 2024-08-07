@@ -38,7 +38,7 @@ public class EmpDao {
 		String sql = "INSERT INTO employee ( "
 				+ "emp_no, emp_major, emp_grade, emp_name, "
 				+ "emp_birth, emp_gender, emp_tel, hire_date, emp_pw "
-				+ ") VALUES (?,?,?,?,?,?,?,?,PASSWORD(?))";
+				+ ") VALUES (?,?,?,?,?,?,?,?, SHA2('?', 256))";
 		
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, empNo); // 신규 직원의 사번
@@ -84,7 +84,7 @@ public class EmpDao {
 		//사용자 인증: 입력된 사번과 비밀번호가 일치하는 직원의 정보 조회
 		String sql = "SELECT emp_no, emp_grade, emp_name "
 				+ "FROM employee "
-				+ "WHERE emp_no=? AND emp_pw = password(?)";
+				+ "WHERE emp_no=? AND emp_pw = SHA2(?, 256)";
 		
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, empNo); //사용자의 사번
@@ -132,11 +132,11 @@ public class EmpDao {
 		Connection conn = DBHelper.getConnection();
 		
 		//사용자의 새 비밀번호 업데이트: 새 비밀번호가 현재 비밀번호나 과거에 사용된 비밀번호와 다를 경우에만 업데이트
-		String sql = "UPDATE employee SET emp_pw = PASSWORD(?) "
-				+ "WHERE emp_no = ? AND emp_pw = PASSWORD(?) AND PASSWORD(?) <> PASSWORD(?) "
+		String sql = "UPDATE employee SET emp_pw = SHA2('?', 256) "
+				+ "WHERE emp_no = ? AND emp_pw = SHA2('?', 256) AND SHA2('?', 256) <> SHA2('?', 256) "
 				+ "AND NOT EXISTS ("
 				+ "    SELECT 1 FROM password_history "
-				+ "    WHERE emp_no = ? AND previous_pw = PASSWORD(?)"
+				+ "    WHERE emp_no = ? AND previous_pw = SHA2('?', 256)"
 				+ ")";
 	
 		stmt = conn.prepareStatement(sql);
@@ -175,7 +175,7 @@ public class EmpDao {
 		
 		//비밀번호 변경 이력 저장: 직원의 이전 비밀번호를 저장
 		String sql = "INSERT INTO password_history (emp_no, previous_pw, update_date) "
-				+ "VALUES (?,PASSWORD(?),NOW())";
+				+ "VALUES (?,SHA2('?', 256),NOW())";
 		
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, empNo); // 사용자의 사번

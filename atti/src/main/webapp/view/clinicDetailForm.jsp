@@ -314,8 +314,9 @@
                     <input type="hidden" value="default.jpg" name="fileNameInsert">
                     
                     <span>검사 등록</span>
+                    <br><br>
                     <div>
-                        <div>검사 종류</div>
+                        <div class="mb-1">검사 종류</div>
                         <select name="examinationKind">
                             <%
                             	// 검사 종류
@@ -327,11 +328,12 @@
                             %>
                         </select>
                     </div>
+                    <br>
                     <div>
-                        <div>검사 내용</div>
+                        <div class="mb-1">검사 내용</div>
                         <input type="text" name="examinationContent">
                     </div>
-                    
+                    <br>
                     <button type="submit">등록</button>
                 </form>
             </div>

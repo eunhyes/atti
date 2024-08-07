@@ -63,11 +63,11 @@
 			<form action="/atti/action/loginAction.jsp" method="post" >
 				<div class="inputDiv">
 					<label>아이디</label>
-					<input type="text" name="empNo">
+					<input type="text" name="empNo" value="1100802">
 				</div>
 				<div class="inputDiv">
 					<label>비밀번호</label>
-					<input type="password" name="empPw">
+					<input type="password" name="empPw" value="1234">
 				</div>
 				<button type="submit">확인</button>
 				

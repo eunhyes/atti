@@ -42,7 +42,7 @@ public class PaymentDao {
 				+ " INNER JOIN registration r ON r.regi_no = pm.regi_no" //접수의 접수번호 = 결제의 접수번호
 				+ " INNER JOIN pet p ON r.pet_no = p.pet_no"			//레지의 동물번호 = 동물의 동물번호
 				+ " WHERE pm.payment_state LIKE ?"
-				+ " GROUP BY pm.regi_no" 			
+				+ " GROUP BY pm.regi_no, pm.payment_state, pm.create_date" 			
 				+ " ORDER BY pm.create_date DESC"						//최신순으로 정렬
 				+ " LIMIT ?, ?"; 					
 		
@@ -118,7 +118,9 @@ public class PaymentDao {
 				+ " LEFT JOIN hospital_room hr ON hp.room_name = hr.room_name" 					// 입원의 입원호실 = 입원호실의 입원호실
 				+ " LEFT JOIN prescription ps ON regi.regi_no = ps.regi_no" 					// 결제의 접수번호 = 처방의 접수번호
 				+ " LEFT JOIN medicine md ON ps.medicine_no = md.medicine_no" 					// 처방의 약번호 = 약의 약번호
-				+ " WHERE pay.regi_no = ?";
+				+ " WHERE pay.regi_no = ?"
+				+ " GROUP BY pay.regi_no, pet.pet_name, c.customer_name, pay.payment_state, cn.clinic_cost, sg.surgery_kind";
+				
 		
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, regiNo);
@@ -428,7 +430,7 @@ public class PaymentDao {
 				+ " LEFT JOIN medicine md ON ps.medicine_no = md.medicine_no"
 				+ " WHERE pm.payment_state LIKE '완납'"
 				+ "	AND DATE_FORMAT(pm.create_date, '%Y-%m') = ?"
-				+ "	GROUP BY pm.regi_no"
+				+ "	GROUP BY pm.regi_no, pm.payment_state, pm.create_date"
 				+ "	ORDER BY pm.create_date DESC";
 		
 		stmt = conn.prepareStatement(sql);
