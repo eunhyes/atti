@@ -5,7 +5,18 @@
 반려 동물 시장이 증가함에 따라 의료 서비스를 제공하는 동물 병원의 필요성이 높아져 종합 동물 병원의 ERP시스템 구현
 - 배포 URL : <http://13.209.193.10/atti/view/loginForm.jsp>
 - 개발 기간 : 2024.04.30 ~ 2024.05.24 (4주)
-<br><br>
+
+**개발 환경**
+<br>
+OS : Mac OS sonoma <br>
+Back-end : Java <br> 
+Front-end : HTML5, CSS3, BootStrap <br>
+Database : MariaDB <br>
+WAS : Apache Tomcat 10 <br>
+IDE : Eclipse <br>
+Cloud Service : Amazon Web Services <br>
+버전관리 : GitHub <br>
+<br>
 
 ## 📍 팀원 구성
 - 김인수 ([@Guinsu](https://github.com/Guinsu))
@@ -16,27 +27,12 @@
 
 ## 🖇️ 요구사항 명세서
 <img src="https://github.com/GDJ80-TeamC/semi-atti/blob/6572b27fb473d0ca1026451a540e9196287a7d22/atti/src/main/webapp/META-INF/document/GDJ80_teamC_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B8%EC%84%9C.png" width="1000"/>
-<br><br>
+<br>
 
 ## 📌 ERD다이어 그램 
 <img src="https://github.com/GDJ80-TeamC/semi-atti/blob/7147292df72ef10ce1464b42957e348adc7f379a/atti/src/main/webapp/META-INF/document/GDJ80_teamC_ERD%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8.png" width="1000"/>
-<br><br>
+<br>
 
-**개발 환경**
-OS: Windows10
-Database : MariaDB
-Server: Apache Tomcat(10.1.23)
-Language: Java17, HTML5, CSS3, SQL, JavaScript
-Library: Bootstrap5, jQuery, JSTL, Lombok, MyBatis, Maven
-사용 프로그램: STS4, HeidiSQL
-
-**서비스 환경**
-OS: Ubuntu
-Database : MariaDB
-Platform : AWS Lightsail
-Language : Java17
-
-<br><br>
 ## 💫 담당 기능
 ### [접수/예약 목록 페이지]
 - 접수 리스트
@@ -69,7 +65,7 @@ Language : Java17
 ### [처방 리스트]
 - 페이징, 날짜 검색 기능 구현
 
-<br><br>
+<br>
 
 ## 🛠️ Stacks 
  ### Development Environment & DB
